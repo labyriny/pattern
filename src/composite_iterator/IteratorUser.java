@@ -14,6 +14,7 @@ public class IteratorUser {
 
     public void printMenu() {
         menus.print("    ");
+        // menus 하위 객체들이 list, array 어떤 형태든 createIterator 로 Iterator 를 리턴
         Iterator iterator = menus.createIterator();
         while (iterator.hasNext()) {
             MenuComponent menu = (MenuComponent)iterator.next();
