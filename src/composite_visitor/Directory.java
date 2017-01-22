@@ -1,4 +1,4 @@
-package composite;
+package composite_visitor;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by user on 2017-01-13.
  */
-public class Directory extends MenuComponent{
+public class Directory extends MenuComponent {
     String code;
     String name;
     boolean isPrivate;
@@ -55,17 +55,13 @@ public class Directory extends MenuComponent{
     }
 
     @Override
-    public void print(String tab) {
-        printOnlyThis(tab);
+    public void accept(MenuVisitor visitor) {
+        visitor.visit(this);
 
         Iterator iterator = menuComponentList.iterator();
         while (iterator.hasNext()) {
             MenuComponent menu = (MenuComponent) iterator.next();
-            menu.print(tab + "    ");
+            menu.accept(visitor);
         }
-    }
-    @Override
-    public void printOnlyThis(String tab) {
-        System.out.println(tab + "└ [D]" + getName() + "(" + getCode() + ")");
     }
 }

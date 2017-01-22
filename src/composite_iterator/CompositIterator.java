@@ -1,4 +1,4 @@
-package composite;
+package composite_iterator;
 
 import java.util.Iterator;
 import java.util.Stack;
@@ -36,7 +36,7 @@ public class CompositIterator implements Iterator {
         Iterator iterator = (Iterator)stack.peek();
         MenuComponent menu = (MenuComponent)iterator.next();
         if(menu instanceof Directory) {
-            stack.push(((Directory) menu).createIterator());
+            stack.push((menu).createIterator());
         }
         return menu;
     }

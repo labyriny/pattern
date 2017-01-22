@@ -1,11 +1,11 @@
-package composite;
+package composite_iterator;
 
 import java.util.Iterator;
 
 /**
  * Created by user on 2017-01-13.
  */
-public class Link extends MenuComponent{
+public class Link extends MenuComponent {
     String code;
     String name;
     String linkUrl;
@@ -16,6 +16,11 @@ public class Link extends MenuComponent{
         this.name = name;
         this.linkUrl = linkUrl;
         this.isPrivate = isPrivate;
+    }
+
+    @Override
+    public Iterator createIterator() {
+        return new Nulliterator();
     }
 
     @Override
@@ -40,11 +45,6 @@ public class Link extends MenuComponent{
 
     @Override
     public void print(String tab) {
-        System.out.println(tab + "└ [L]" + getName() + "(" + getCode() + ")" + " : " + getLinkUrl());
-    }
-
-    @Override
-    public void printOnlyThis(String tab) {
         System.out.println(tab + "└ [L]" + getName() + "(" + getCode() + ")" + " : " + getLinkUrl());
     }
 }

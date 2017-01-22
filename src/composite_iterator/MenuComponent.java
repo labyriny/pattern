@@ -1,4 +1,4 @@
-package composite;
+package composite_iterator;
 
 import java.util.Iterator;
 import java.util.List;
@@ -49,9 +49,4 @@ public abstract class MenuComponent {
     public void print(String tab) {
         throw new UnsupportedOperationException();
     }
-
-    public void printOnlyThis(String tab) {
-        throw new UnsupportedOperationException();
-    }
-
 }

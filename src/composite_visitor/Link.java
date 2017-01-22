@@ -1,11 +1,9 @@
-package composite;
-
-import java.util.Iterator;
+package composite_visitor;
 
 /**
  * Created by user on 2017-01-13.
  */
-public class Link extends MenuComponent{
+public class Link extends MenuComponent {
     String code;
     String name;
     String linkUrl;
@@ -39,12 +37,7 @@ public class Link extends MenuComponent{
     }
 
     @Override
-    public void print(String tab) {
-        System.out.println(tab + "└ [L]" + getName() + "(" + getCode() + ")" + " : " + getLinkUrl());
-    }
-
-    @Override
-    public void printOnlyThis(String tab) {
-        System.out.println(tab + "└ [L]" + getName() + "(" + getCode() + ")" + " : " + getLinkUrl());
+    public void accept(MenuVisitor visitor) {
+        visitor.visit(this);
     }
 }

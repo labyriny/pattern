@@ -1,30 +1,35 @@
-package composite;
+package composite_iterator;
 
 import java.util.Iterator;
 
 /**
  * Created by user on 2017-01-13.
  */
-public class User {
+public class IteratorUser {
     MenuComponent menus;
 
-    public User(MenuComponent menus) {
+    public IteratorUser(MenuComponent menus) {
         this.menus = menus;
     }
 
     public void printMenu() {
-        menus.print("");
+        menus.print("    ");
+        Iterator iterator = menus.createIterator();
+        while (iterator.hasNext()) {
+            MenuComponent menu = (MenuComponent)iterator.next();
+            menu.print("    ");
+        }
     }
 
     public void printPrivateMenu() {
-        menus.printMenuByIterator();
+        menus.print("    ");
         Iterator iterator = menus.createIterator();
         while (iterator.hasNext()) {
             MenuComponent menu = (MenuComponent)iterator.next();
 
             try {
                 if(menu.isPrivate()) {
-                    menu.printMenuByIterator();
+                    menu.print("    ");
                 }
             } catch (UnsupportedOperationException e) {}
         }

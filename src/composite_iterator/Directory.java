@@ -1,4 +1,4 @@
-package composite;
+package composite_iterator;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by user on 2017-01-13.
  */
-public class Directory extends MenuComponent{
+public class Directory extends MenuComponent {
     String code;
     String name;
     boolean isPrivate;
@@ -17,6 +17,12 @@ public class Directory extends MenuComponent{
         this.code = code;
         this.name = name;
         this.isPrivate = isPrivate;
+    }
+
+    // iterator 적용
+    @Override
+    public Iterator createIterator() {
+        return new CompositIterator(menuComponentList.iterator());
     }
 
     @Override
@@ -56,16 +62,6 @@ public class Directory extends MenuComponent{
 
     @Override
     public void print(String tab) {
-        printOnlyThis(tab);
-
-        Iterator iterator = menuComponentList.iterator();
-        while (iterator.hasNext()) {
-            MenuComponent menu = (MenuComponent) iterator.next();
-            menu.print(tab + "    ");
-        }
-    }
-    @Override
-    public void printOnlyThis(String tab) {
-        System.out.println(tab + "└ [D]" + getName() + "(" + getCode() + ")");
+        System.out.println("└ [D]" + getName() + "(" + getCode() + ")");
     }
 }

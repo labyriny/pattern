@@ -1,9 +1,9 @@
-package composite;
+package composite_visitor;
 
 /**
  * Created by user on 2017-01-13.
  */
-public class Test {
+public class VisitorMain {
     public static void main(String[] args) {
         // 가맹점관리 데이터 셋팅
         MenuComponent merchantManagement = new Directory("0002", "가맹점관리", true);
@@ -29,13 +29,14 @@ public class Test {
         root.add(developerManagement);
 
         // 메뉴 호출
-        User user = new User(root);
-        System.out.println("내부반복===========================================");
+        VisitorUser user = new VisitorUser(root);
+
+        // 모든 경로
+        System.out.println("=========all menu with visitor=========");
         user.printMenu();
 
-        //
-        System.out.println("외부반복 : private menu ===========================================");
+        // private 인 것만
+        System.out.println("=========is private with visitor=========");
         user.printPrivateMenu();
-
     }
 }

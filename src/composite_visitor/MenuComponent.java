@@ -1,16 +1,11 @@
-package composite;
+package composite_visitor;
 
-import java.util.Iterator;
 import java.util.List;
 
 /**
  * Created by user on 2017-01-13.
  */
 public abstract class MenuComponent {
-    public Iterator createIterator() {
-        throw new UnsupportedOperationException();
-    }
-
     // 하위 메뉴 관리 기능
     public void add(MenuComponent menu) {
         throw new UnsupportedOperationException();
@@ -46,11 +41,7 @@ public abstract class MenuComponent {
     }
 
     // 메뉴 정보 출력
-    public void print(String tab) {
-        throw new UnsupportedOperationException();
-    }
-
-    public void printOnlyThis(String tab) {
+    public void accept(MenuVisitor visitor) {
         throw new UnsupportedOperationException();
     }
 
